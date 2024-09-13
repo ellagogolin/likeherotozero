@@ -1,0 +1,79 @@
+body {
+    font-family: Arial;
+}
+
+h1 {
+    font-size: 1.7em;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+#kopf_links {
+    float: left;
+    margin: 5px;
+    margin-right: 20px;
+}
+
+#kopf_rechts {
+    height: 130px;
+}
+
+p#fussnote {
+    font-size: 0.7em;
+}
+
+table.artikel {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid grey;
+    padding: 3px;
+    padding-left: 8px;
+}
+
+th {
+    text-align: left;
+    background-color: #CCC;
+}
+
+tr.ungerade {
+    background-color: #EEE;
+}
+
+tr.gerade {
+    background-color: #FFF;
+}
+
+
+td.nr {
+    background-color: lightblue;
+}
+
+.navbar {
+ display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 14px 20px;
+  background-color: #008080;
+}
+
+navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+logo {
+  width: 5px;
+  height: 5px;
+  margin-left: 10px;
+}
+
+site-name {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}

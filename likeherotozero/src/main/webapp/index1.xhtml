@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <meta charset="UTF-8"/>
+      <title>Like Hero To Zero</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+</head>
+	<body>
+	    <div class="navbar">
+	      <div class="navbar-left">
+	        <img src="footprint.jpg" alt="Logo" class="logo"/>
+	        <span class="site-name">Like Hero To Zero</span>
+	      </div>
+	      <h:form>
+		    <h:commandButton action="#{loginBean.logout}" value="Logout"></h:commandButton>
+		  </h:form>
+	  </div>
+		 <h:form>
+    <h:dataTable value="#{emissionBean.emissionsList}" var="emission">
+        <h:column>
+            <f:facet name="header">Country Name</f:facet>
+            <h:inputText value="#{emission.countryName}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Emission</f:facet>
+            <h:inputText value="#{emission.emission}"/>
+        </h:column>
+
+        <h:column>
+                <f:facet name="header">Bearbeiten</f:facet>
+                <img src="edit.jpg" alt="Edit" class="edit"/>
+                <h:commandButton value="Speichern" action="#{emissionBean.updateEmission(emission)}"/>
+            </h:column>
+    </h:dataTable>
+</h:form>
+	</body>
+</html>

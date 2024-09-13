@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <meta charset="UTF-8"/>
+      <title>Like Hero To Zero</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+</head>
+	<body>
+	    <div class="navbar">
+	      <div class="navbar-left">
+	        <img src="footprint.jpg" alt="Logo" class="logo"/>
+	        <span class="site-name">Like Hero To Zero</span>
+	      </div>
+		 <h:form>
+		    <h:outputText value="Username" />
+		    <h:inputText id="username" value="#{loginBean.username}"></h:inputText>
+		    <h:message for="username"></h:message>
+		    <br></br><br></br>
+		    <h:outputText value="Password" />
+		    <h:inputSecret id="password" value="#{loginBean.password}"></h:inputSecret>
+		    <h:message for="password"></h:message>
+		    <br></br><br></br>
+		    <h:commandButton action="#{loginBean.login}" value="Login"></h:commandButton>
+		</h:form>
+	  </div>
+	  <h:form>
+    <h:panelGrid columns="2">
+        <h:outputLabel value="Select Country:" />
+        <h:selectOneMenu value="#{emissionBean.selectedCountry}">
+            <f:selectItem itemLabel="All" itemValue=""/>
+            <f:selectItems value="#{emissionBean.countryList}" var="country" 
+                           itemLabel="#{country}" itemValue="#{country}" />
+        </h:selectOneMenu>
+
+        <h:commandButton value="Apply Filter" action="#{emissionFilter.filterEmissions}" />
+    </h:panelGrid>
+    <br/><br/>
+    <h:dataTable value="#{emissionFilter.filterEmissions}" var="emission">
+        <h:column>
+            <f:facet name="header">Country Name</f:facet>
+            <h:outputText value="#{emission.countryName}" />
+        </h:column>
+        
+        <h:column>
+            <f:facet name="header">Emission</f:facet>
+            <h:outputText value="#{emission.emission}" />
+        </h:column>
+    </h:dataTable>
+</h:form>
+	</body>
+</html>
