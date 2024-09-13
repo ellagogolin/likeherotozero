@@ -12,8 +12,14 @@ import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 @ViewScoped
-public abstract class EmissionBean extends Emissiondata {
-	public abstract void useEmissiondata(); 
+public abstract class EmissionBean extends EmissionData {
+	
+	public EmissionBean(String countryName, float emission, int countryCode) {
+		super(countryName, emission, countryCode);
+	
+	}
+
+	public abstract void useEmissionData(); 
     private List<EmissionData> emissionsList;
     
     private EmissionData selectedEmission;

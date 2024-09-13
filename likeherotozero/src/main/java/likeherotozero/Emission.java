@@ -5,22 +5,22 @@ import javax.persistence.*;
 @Entity
 @Table(name = "emissionsdaten")
 
-public class Emission {
+public class Emission extends MySQL {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long countryCode;
+	protected int countryCode;
 
     @Column(name = "country_name")
-    private String countryName;
+	protected String countryName;
 
     @Column(name = "emission")
-    private Double emission;
+	protected float emission;
 
-    public Long getCountryCode() {
+    public int getCountryCode() {
         return countryCode;
     }
 
-    public void setId(Long countryCode) {
+    public void setId(int countryCode) {
         this.countryCode = countryCode;
     }
 
@@ -32,11 +32,11 @@ public class Emission {
         this.countryName = countryName;
     }
 
-    public Double getEmission() {
+    public float getEmission() {
         return emission;
     }
 
-    public void setEmission(Double emission) {
+    public void setEmission(float emission) {
         this.emission = emission;
     }
 }

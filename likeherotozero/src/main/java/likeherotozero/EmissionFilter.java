@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("hiding")
 @ManagedBean
 @SessionScoped
 public class EmissionFilter<SessionFactory> {
@@ -19,7 +20,8 @@ public class EmissionFilter<SessionFactory> {
     private List<String> countryList; 
     private List<Emission> filteredEmissions; 
 
-    public EmissionFilter() {
+    @SuppressWarnings("unchecked")
+	public EmissionFilter() {
         factory = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         loadCountryList(); 
         filterEmissions(); 

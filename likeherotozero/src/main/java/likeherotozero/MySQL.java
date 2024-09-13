@@ -8,11 +8,12 @@ import java.sql.SQLException;
 
 public class MySQL {
 
-	private static final String host = "localhost";
-	private static final String port = "3306";
-	private static final String database = "mysql-likeherotozero";
-	private static final String username ="root";
-	private static final String password = "";
+	protected static final String host = "localhost";
+	protected static final String port = "3306";
+	protected static final String database = "mysql-likeherotozero";
+	protected static final String username ="root";
+	protected static final String password = "";
+	protected static final String QUERY = "SELECT country_name, emission FROM emissionsdaten";
 	
 	private static Connection con;
 	

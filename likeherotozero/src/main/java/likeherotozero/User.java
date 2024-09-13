@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 
-public class User {
+public class User extends MySQL {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,7 +16,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    // Getter und Setter
+    
     public Long getId() {
         return id;
     }
