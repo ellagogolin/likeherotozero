@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{_layout}">
+<body>
+    <section layout:fragment="content">
+        <h1>Emissionen nach Land</h1>
+        <table class="table">
+            <thead>
+                <th scope="col">Ländervorwahl</th>
+                <th scope="col">Land</th>
+                <th scope="col">Emissionen in Tonnen</th>
+                <th scope="col">zuletzt aktualisiert</th>
+                <th scope="col" sec:authorize="isAuthenticated()"></th>
+            </thead>
+            <tbody>
+                <tr th:each="emission: ${emissions}">
+                    <td scope="row" th:text="${emission.phoneCountryCode}"></td>
+                    <td th:text="${emission.countryName}"></td>
+                    <td th:text="${emission.emissionInMegaTons}"></td>
+                    <td th:text="${#dates.format(emission.updatedAt, 'dd.MM.yyyy')}"></td>
+                    <td sec:authorize="isAuthenticated()">
+                        <a th:href="@{/emission/{id}(id=${emission.id})}" style="color: darkgreen">Verwaltung</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

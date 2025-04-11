@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{_layout}">
+<body>
+<section layout:fragment="content">
+    <h1 th:if="${emission != null}">Emissionen von #<th:block th:text="${emission.phoneCountryCode}"></th:block> - <th:block th:text="${emission.countryName}"></th:block></h1>
+    <h1 th:if="${emission == null}">neue Emission</th:block></h1>
+    <form th:object="${commandObject}" class="d-flex" role="search" th:action="@{/emission{id}(id=${emission != null ? '/'+emission?.id : ''})}" th:method="${emission == null} ? 'PUT' : 'POST'">
+        <input class="form-control me-2" type="number" min="0" th:value="${emission?.phoneCountryCode}" aria-label="phoneCountryCode" th:name="phoneCountryCode" placeholder="Ländervorwahl"/>
+        <input class="form-control me-2" type="text" th:value="${emission?.countryName}" aria-label="countryName" th:name="countryName" placeholder="Ländername"/>
+        <input class="form-control me-2" type="number" min="0" th:value="${emission?.emissionInMegaTons}" aria-label="emissionInMegaTons" th:name="emissionInMegaTons" placeholder="Emissionswert in mt"/>
+        <button class="btn btn-outline-success" type="submit">speichern</button>
+    </form>
+    <form th:if="${emission != null}" th:object="${commandObject}" th:action="@{/emission/{emission}(emission=${emission.id})}" th:method="delete">
+        <button type="submit" class="btn btn-danger">löschen</button>
+    </form>
+</section>
+</body>
+</html>
